@@ -28,3 +28,6 @@ jest-test-results.json
 # Optional: if using IDEs
 .vscode/
 .idea/
+
+# Vite timestamp cache files
+vite.config.js.timestamp-*
