@@ -20,7 +20,8 @@ export default function SkillsSection({ skills }) {
 
   const [showAll, setShowAll] = useState(false);
 
-  const initialCount = isMobile ? 3 : 9;
+  // Set initial count to a multiple of column grids (e.g., 8 items for a clean 4-column layout)
+  const initialCount = isMobile ? 3 : 8;
 
   const visibleSkills = showAll ? skills : skills.slice(0, initialCount);
 
@@ -36,7 +37,8 @@ export default function SkillsSection({ skills }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
+      {/* Updated to 2 cols on mobile, 4 cols on tablets (iPad Pro / Surface Pro), and 6 cols on large screens */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
         {visibleSkills.map((skill, index) => (
           <div
             key={index}
