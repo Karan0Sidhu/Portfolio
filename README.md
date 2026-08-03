@@ -1,6 +1,7 @@
+```markdown
 # React + Vite + Tailwind CSS Portfolio Project
 
-A modern, responsive AI-powered portfolio and web application built using cutting-edge frontend technologies, featuring an integrated conversational assistant powered by the Hugging Face Inference API.
+A modern, responsive AI-powered portfolio and web application built using cutting-edge frontend technologies, featuring an integrated conversational assistant and a showcase of academic and professional milestones including experience at RoboGarden, TMIC Wishart Node, and graduate studies at the University of Ottawa[cite: 1, 2, 4, 6].
 
 ## 🚀 Features
 
@@ -16,7 +17,8 @@ A modern, responsive AI-powered portfolio and web application built using cuttin
 * **React Router** - Declarative routing for React applications
 
 
-* **Hugging Face AI Chatbot Integration** - Intelligent portfolio assistant powered by `Qwen/Qwen2.5-72B-Instruct`
+* **AI Chatbot Integration** - Intelligent portfolio assistant and interactive features
+
 
 * **Netlify Serverless Deployment** - Fully integrated with Netlify Functions for seamless backend API routing
 
@@ -41,25 +43,26 @@ npm install
 # or
 yarn install
 
+
 ```
 
-
 2. **Configure Environment Variables:**
-Create a `.env` file in the root directory of your project and add your Hugging Face API token:
+Create a `.env` file in the root directory of your project and add your API tokens:
+
 ```env
 HF_API_TOKEN=your_actual_huggingface_token_here
 
+
 ```
 
-
 3. **Start the Development Environment:**
-To run both Vite and the local Express server concurrently:
+To run both Vite and the local development server concurrently:
+
 ```bash
 npm run dev
 
+
 ```
-
-
 
 ---
 
@@ -86,6 +89,7 @@ npm run dev
 ├── tailwind.config.js          # Tailwind CSS configuration
 ├── vite.config.js              # Vite configuration
 
+
 ```
 
 ---
@@ -104,13 +108,13 @@ This project uses Tailwind CSS for styling. The configuration includes:
 
 ### Deploying to Netlify
 
-This project is configured for seamless deployment on Netlify using **Netlify Functions** for the AI backend:
+This project is configured for seamless deployment on Netlify using **Netlify Functions** for backend routing:
 
 1. Connect your repository to Netlify.
+
+
 2. Ensure the build command is set to `npm run build` and the publish directory is set to `dist`.
-
-
-3. Add your `HF_API_TOKEN` under **Site settings > Environment variables** in your Netlify dashboard.
+3. Add your environment variables under **Site settings > Environment variables** in your Netlify dashboard.
 
 
 
@@ -120,6 +124,7 @@ To build and preview production bundles locally:
 npm run build
 npm run preview
 
+
 ```
 
 ---
@@ -127,15 +132,15 @@ npm run preview
 ## 🙏 Acknowledgments
 
 * Built with [Rocket.new](https://rocket.new)
-
-* Powered by React, Vite, and Hugging Face AI
-
-
+* Powered by React, Vite, and modern AI tooling
 * Styled with Tailwind CSS
-
-
 
 ### Design Assets
 
 * **Figma Design:** [Solvinger - The AI Chatbot](https://www.figma.com/design/HCNuVYJqhMnV61kpoCtH6u/Solvinger---The-Ai-chat-bot--Community-?node-id=1-7&t=x5yBunoSja4Gm0iG-0)
+
 * **Icons:** Community Figma icon libraries
+
+```
+
+```
