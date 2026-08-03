@@ -1,31 +1,11 @@
-import React, { useState, useEffect } from "react";
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1200);
-
-  useEffect(() => {
-    function handleResize() {
-      setWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return width;
-}
+import React, { useState } from "react";
 
 export default function SkillsSection({ skills }) {
-  const width = useWindowWidth();
-  const isMobile = width < 768; // Mobile breakpoint at 768px
-
   const [showAll, setShowAll] = useState(false);
 
-  // Set initial count to a multiple of column grids (e.g., 8 items for a clean 4-column layout)
-  const initialCount = isMobile ? 3 : 8;
-
+  // Default to showing 11 skills initially (leaving room for the toggle card to complete a row)
+  const initialCount = 11;
   const visibleSkills = showAll ? skills : skills.slice(0, initialCount);
-
-  // Show toggle if skills are more than initial count or if showing all
   const showToggle = skills.length > initialCount || showAll;
 
   return (
@@ -37,23 +17,23 @@ export default function SkillsSection({ skills }) {
         </div>
       </div>
 
-      {/* Updated to 2 cols on mobile, 4 cols on tablets (iPad Pro / Surface Pro), and 6 cols on large screens */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+      {/* Flexbox container guarantees clean wrapping across iOS Chrome without grid track bugs */}
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
         {visibleSkills.map((skill, index) => (
           <div
             key={index}
-            className={`w-full aspect-square border-2 border-primary rounded flex flex-col items-center justify-center p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-default ${
+            className={`w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(25%-1.125rem)] lg:w-[calc(16.666%-1.25rem)] aspect-square border-2 border-primary rounded flex flex-col items-center justify-center p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-default ${
               skill.dark ? "bg-primary" : "bg-white"
             }`}
           >
             <img
               src={skill.icon}
               alt={skill.name}
-              className="w-12 h-12 sm:w-14 sm:h-14 mb-2 sm:mb-4 object-contain"
+              className="w-14 h-14 sm:w-16 sm:h-16 mb-2 sm:mb-4 object-contain"
               style={{ filter: "brightness(0) saturate(100%)" }}
             />
             <span
-              className={`text-lg sm:text-xl font-bold font-sora text-center capitalize ${
+              className={`text-base sm:text-lg font-bold font-sora text-center capitalize ${
                 skill.dark ? "text-white" : "text-primary"
               }`}
             >
@@ -65,7 +45,7 @@ export default function SkillsSection({ skills }) {
         {showToggle && (
           <div
             onClick={() => setShowAll(!showAll)}
-            className="w-full aspect-square border-2 border-dashed border-primary rounded flex items-center justify-center cursor-pointer hover:shadow-lg transition-shadow select-none bg-white"
+            className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(25%-1.125rem)] lg:w-[calc(16.666%-1.25rem)] aspect-square border-2 border-dashed border-primary rounded flex items-center justify-center cursor-pointer hover:shadow-lg transition-shadow select-none bg-white"
             role="button"
             tabIndex={0}
             onKeyPress={(e) => {
@@ -74,7 +54,7 @@ export default function SkillsSection({ skills }) {
             aria-label={showAll ? "Show less skills" : "Show more skills"}
           >
             <span className="text-5xl font-bold text-primary select-none">
-              {showAll ? "\u2212" /* minus sign */ : "..."}
+              {showAll ? "\u2212" : "..."}
             </span>
           </div>
         )}
