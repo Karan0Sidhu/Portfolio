@@ -156,7 +156,7 @@ const projects = [
       title: 'Portfolio Chatbot Website',
       description: 'Built a modern, responsive AI chatbot website using React 18, Vite, and Tailwind CSS for fast performance and a seamless user experience. Integrated dynamic routing with React Router and modular architecture with reusable components for scalability. Deployed backend chatbot service alongside a styled frontend based on community Figma designs, enabling user-friendly conversational AI access.',
       image: '/images/KSLogo.svg',
-      repolink: 'https://github.com/Karan0Sidhu/public_portfolio'
+      repolink: 'https://github.com/Karan0Sidhu/Portfolio'
     }
   ];
 
