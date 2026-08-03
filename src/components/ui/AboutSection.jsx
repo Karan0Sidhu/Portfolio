@@ -79,11 +79,11 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" className="px-6 md:px-16 lg:px-28 py-16 md:py-20 flex flex-col lg:flex-row items-center gap-y-12 lg:gap-16">
+    <section id="about" className="px-4 sm:px-6 md:px-16 lg:px-28 py-16 md:py-20 flex flex-col lg:flex-row items-center gap-y-12 lg:gap-16 overflow-hidden">
       {/* Interactive Scrollable Timeline Journey Map */}
-      <div className="w-full lg:flex-1 flex flex-col justify-center">
-        <div className="max-h-[450px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-primary/30 scrollbar-track-transparent">
-          <div className="relative border-l-2 border-gray-300 ml-6 space-y-8 py-2">
+      <div className="w-full lg:flex-1 flex flex-col justify-center min-w-0">
+        <div className="max-h-[450px] overflow-y-auto pr-2 sm:pr-4 scrollbar-thin scrollbar-thumb-primary/30 scrollbar-track-transparent">
+          <div className="relative border-l-2 border-gray-300 ml-4 sm:ml-6 space-y-8 py-2">
             {/* Solid primary line overlay for completed/current section up to RoboGarden */}
             <div className="absolute top-0 left-[-2px] w-[2px] bg-primary h-[calc(83%)] pointer-events-none" />
 
@@ -96,11 +96,11 @@ const AboutSection = () => {
                   key={item.id} 
                   ref={item.current ? currentItemRef : null}
                   onClick={() => setActiveId(item.id)}
-                  className="relative pl-8 cursor-pointer group"
+                  className="relative pl-6 sm:pl-8 cursor-pointer group"
                 >
                   {/* Timeline Node Dot */}
                   <div 
-                    className={`absolute -left-[9px] top-1.5 w-4 h-4 rounded-full border-2 transition-all duration-300 ${
+                    className={`absolute -left-[9px] top-1.5 w-4 h-4 rounded-full border-2 transition-all duration-300 flex-shrink-0 ${
                       isActive 
                         ? "bg-primary border-primary scale-125 shadow-md" 
                         : isPastOrCurrent 
@@ -110,7 +110,7 @@ const AboutSection = () => {
                   />
 
                   {/* Content Card */}
-                  <div className={`p-4 sm:p-5 rounded-xl border-2 transition-all duration-300 relative ${
+                  <div className={`p-4 sm:p-5 rounded-xl border-2 transition-all duration-300 relative w-full box-border break-words ${
                     isActive 
                       ? "border-primary bg-white shadow-lg" 
                       : isPastOrCurrent
@@ -128,10 +128,10 @@ const AboutSection = () => {
                       </span>
                     )}
 
-                    <span className="text-xs font-bold font-sora text-primary uppercase tracking-wider">
+                    <span className="text-xs font-bold font-sora text-primary uppercase tracking-wider block pr-16 sm:pr-0">
                       {item.date}
                     </span>
-                    <h3 className="text-base sm:text-lg font-extrabold font-sora text-primary mt-1">
+                    <h3 className="text-base sm:text-lg font-extrabold font-sora text-primary mt-1 pr-16 sm:pr-0">
                       {item.title}
                     </h3>
                     <h4 className="text-xs sm:text-sm font-semibold font-sora text-secondary">
@@ -149,7 +149,7 @@ const AboutSection = () => {
       </div>
 
       {/* Text Section */}
-      <div className="w-full lg:flex-1">
+      <div className="w-full lg:flex-1 min-w-0">
         <div className="mb-8 text-center lg:text-left">
           <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
             <span className="text-4xl md:text-5xl font-normal font-sora text-primary">About</span>

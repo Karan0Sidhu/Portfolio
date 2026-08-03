@@ -46,9 +46,9 @@ export default function HeroSection({
   };
 
   return (
-    <section className="px-4 sm:px-8 md:px-16 lg:px-28 py-12 sm:py-20 flex flex-col md:flex-row items-center justify-between gap-12">
+    <section className="px-4 sm:px-8 md:px-16 lg:px-28 py-12 sm:py-20 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden">
       {/* Left text container */}
-      <div className="flex-1 max-w-4xl">
+      <div className="flex-1 max-w-4xl min-w-0">
         <div className="mb-6">
           <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4">
             <span className="text-3xl sm:text-4xl md:text-5xl font-normal font-sora text-primary">Hello I am</span>
@@ -83,7 +83,7 @@ export default function HeroSection({
         <div className="flex flex-wrap gap-4">
             <button
                 type="button"
-                className="w-14 h-14 border-2 border-primary rounded flex items-center justify-center hover:bg-primary hover:bg-opacity-10 hover:text-white transition-all"
+                className="w-14 h-14 border-2 border-primary rounded flex items-center justify-center hover:bg-primary hover:bg-opacity-10 hover:text-white transition-all flex-shrink-0"
                 style={{ backgroundColor: 'transparent' }}
                 onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.3)'}
                 onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
@@ -95,7 +95,7 @@ export default function HeroSection({
 
             <button
                 type="button"
-                className="w-14 h-14 border-2 border-primary rounded flex items-center justify-center hover:bg-primary hover:bg-opacity-10 hover:text-white transition-all"
+                className="w-14 h-14 border-2 border-primary rounded flex items-center justify-center hover:bg-primary hover:bg-opacity-10 hover:text-white transition-all flex-shrink-0"
                 style={{ backgroundColor: 'transparent' }}
                 onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.3)'}
                 onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
@@ -107,7 +107,7 @@ export default function HeroSection({
 
             <button
                 type="button"
-                className="w-14 h-14 border-2 border-primary rounded flex items-center justify-center hover:bg-primary hover:bg-opacity-10 hover:text-white transition-all"
+                className="w-14 h-14 border-2 border-primary rounded flex items-center justify-center hover:bg-primary hover:bg-opacity-10 hover:text-white transition-all flex-shrink-0"
                 style={{ backgroundColor: 'transparent' }}
                 onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.3)'}
                 onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
@@ -118,7 +118,7 @@ export default function HeroSection({
             </button>
             <button
                 type="button"
-                className="w-14 h-14 border-2 border-primary rounded flex items-center justify-center hover:bg-primary hover:bg-opacity-10 hover:text-white transition-all"
+                className="w-14 h-14 border-2 border-primary rounded flex items-center justify-center hover:bg-primary hover:bg-opacity-10 hover:text-white transition-all flex-shrink-0"
                 style={{ backgroundColor: 'transparent' }}
                 onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.3)'}
                 onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
@@ -131,10 +131,10 @@ export default function HeroSection({
       </div>
 
       {/* Right container: Highlights & Integrated Chatbot Widget */}
-      <div className="flex-1 flex flex-col gap-6 justify-center md:justify-end w-full max-w-md sm:max-w-lg md:max-w-xl">
+      <div className="flex-1 flex flex-col gap-6 justify-center md:justify-end w-full max-w-md sm:max-w-lg md:max-w-xl min-w-0">
         
-{/* Education & Experience Highlight Card */}
-        <div className="w-full bg-background border-2 border-black rounded-2xl p-6 shadow-xl flex flex-col gap-4">
+        {/* Education & Experience Highlight Card */}
+        <div className="w-full bg-background border-2 border-black rounded-2xl p-4 sm:p-6 shadow-xl flex flex-col gap-4 box-border">
           <div className="flex items-center justify-between border-b border-black pb-3">
             <span className="text-xs uppercase tracking-widest text-primary font-bold font-sora">Recent Highlights</span>
             <span className="text-xs bg-primary/10 text-primary px-2.5 py-1 rounded-full font-sora font-semibold border border-black">2026 Focus</span>
@@ -147,11 +147,11 @@ export default function HeroSection({
                 const elem = document.getElementById("robogarden-experience");
                 if (elem) elem.scrollIntoView({ behavior: 'smooth' });
               }} 
-              className="block p-3.5 rounded-xl border border-black bg-background hover:bg-primary/5 transition-all cursor-pointer"
+              className="block p-3 sm:p-3.5 rounded-xl border border-black bg-background hover:bg-primary/5 transition-all cursor-pointer box-border"
             >
-              <div className="flex justify-between items-start">
+              <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-1 sm:gap-0">
                 <h4 className="font-bold text-primary text-sm font-sora underline decoration-primary/50">UI/UX Developer Intern</h4>
-                <span className="text-xs text-secondary">July 2026 - Present</span>
+                <span className="text-xs text-secondary flex-shrink-0">July 2026 - Present</span>
               </div>
               <p className="text-xs text-secondary mt-1">RoboGarden • Full-stack development & interface design</p>
             </div>
@@ -162,11 +162,11 @@ export default function HeroSection({
                 const elem = document.getElementById("uottawa-experience");
                 if (elem) elem.scrollIntoView({ behavior: 'smooth' });
               }} 
-              className="block p-3.5 rounded-xl border border-black bg-background hover:bg-primary/5 transition-all cursor-pointer"
+              className="block p-3 sm:p-3.5 rounded-xl border border-black bg-background hover:bg-primary/5 transition-all cursor-pointer box-border"
             >
-              <div className="flex justify-between items-start">
+              <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-1 sm:gap-0">
                 <h4 className="font-bold text-primary text-sm font-sora underline decoration-primary/50">M.Sc. in Computer Science (Applied AI)</h4>
-                <span className="text-xs text-secondary">Starting Sept 2026</span>
+                <span className="text-xs text-secondary flex-shrink-0">Starting Sept 2026</span>
               </div>
               <p className="text-xs text-secondary mt-1">University of Ottawa • B.Sc. from UAlberta (2025)</p>
             </div>
@@ -174,16 +174,16 @@ export default function HeroSection({
         </div>
 
         {/* Chatbot Widget Container */}
-        <div className="w-full bg-background border-2 border-black rounded-2xl p-5 shadow-xl flex flex-col h-80">
+        <div className="w-full bg-background border-2 border-black rounded-2xl p-4 sm:p-5 shadow-xl flex flex-col h-80 box-border">
           <div className="flex items-center justify-between border-b border-black pb-3 mb-3">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse flex-shrink-0"></span>
               <span className="text-xs uppercase tracking-widest text-primary font-bold font-sora">Ask Karan's AI Bot</span>
             </div>
           </div>
 
           {!StartChat && chatBotOptionClick1 && chatBotOptionClick2 && chatBotOptionClick3 ? (
-            <div className="flex-1 flex flex-col justify-center gap-2.5">
+            <div className="flex-1 flex flex-col justify-center gap-2.5 overflow-y-auto pr-1">
               {[
                 { label: "What Projects has Karan done?", onClick: chatBotOptionClick1 },
                 { label: "Tell Me About Karan Sidhu?", onClick: chatBotOptionClick2 },
@@ -192,7 +192,7 @@ export default function HeroSection({
                 <div
                   key={index}
                   onClick={option.onClick}
-                  className="bg-background border border-black rounded-xl p-2.5 cursor-pointer hover:bg-primary/10 transition-all text-center group"
+                  className="bg-background border border-black rounded-xl p-2.5 cursor-pointer hover:bg-primary/10 transition-all text-center group box-border"
                 >
                   <p className="text-xs font-sora text-primary font-bold">{option.label}</p>
                 </div>
@@ -206,7 +206,7 @@ export default function HeroSection({
                   className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[85%] px-3 py-2 rounded-xl font-sora ${
+                    className={`max-w-[85%] px-3 py-2 rounded-xl font-sora break-words ${
                       msg.sender === "user"
                         ? "bg-primary text-white rounded-br-none"
                         : "bg-background text-primary border border-black rounded-bl-none"
@@ -234,12 +234,12 @@ export default function HeroSection({
               onChange={handleInputChange}
               disabled={loading}
               placeholder={loading ? "AI is replying..." : "Ask about my experience..."}
-              className="flex-1 bg-background border-2 border-black rounded-xl px-3 py-2.5 text-xs text-primary placeholder-secondary focus:outline-none focus:border-primary font-sora disabled:opacity-50 shadow-sm"
+              className="flex-1 min-w-0 bg-background border-2 border-black rounded-xl px-3 py-2.5 text-xs text-primary placeholder-secondary focus:outline-none focus:border-primary font-sora disabled:opacity-50 shadow-sm"
             />
             <button
               type="submit"
               disabled={loading}
-              className={`bg-primary border-2 border-black text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-all font-sora shadow-sm ${
+              className={`bg-primary border-2 border-black text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-all font-sora shadow-sm flex-shrink-0 ${
                 loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-opacity-90'
               }`}
             >
