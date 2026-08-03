@@ -1,6 +1,6 @@
 // app/page.js (or pages/index.js)
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
 import EditText from '@/components/ui/EditText';
 import Header from "@/components/ui/Header";
@@ -13,7 +13,10 @@ import ChatbotSection from '@/components/ui/ChatBotSection';
 import ContactSection from '@/components/ui/ContactSection';
 import axios from 'axios';
 
-const Home = () => {
+const Home = () => {useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+  
   const [StartChat, setStartChat] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
   const [oldChat, setOldChat] = useState([]);
@@ -22,7 +25,7 @@ const Home = () => {
 
   const allMessages = [];
   const maxLength = Math.max(oldChat.length, oldChatbotChats.length);
-
+  
   // Interleave messages[cite: 1]
   for (let i = 0; i < maxLength; i++) {
     if (oldChat[i]) {
