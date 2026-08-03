@@ -18,6 +18,7 @@ export default function ExperienceSection() {
 
         {/* Experience 1: RoboGarden */}
         <a
+          id="robogarden-experience"
           href="https://www.robogarden.ca"
           target="_blank"
           rel="noopener noreferrer"
@@ -89,7 +90,7 @@ export default function ExperienceSection() {
         </a>
 
         {/* Experience 3: WishartLab */}
-        <a
+        <a id="uottawa-experience"
           href="https://www.wishartlab.com/"
           target="_blank"
           rel="noopener noreferrer"
@@ -136,6 +137,7 @@ export default function ExperienceSection() {
         </a>
 
         {/* Education 1: University of Ottawa */}
+        
         <a
           href="https://www.uottawa.ca"
           target="_blank"
