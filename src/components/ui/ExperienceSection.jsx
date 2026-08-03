@@ -90,7 +90,7 @@ export default function ExperienceSection() {
         </a>
 
         {/* Experience 3: WishartLab */}
-        <a id="uottawa-experience"
+        <a 
           href="https://www.wishartlab.com/"
           target="_blank"
           rel="noopener noreferrer"
@@ -138,7 +138,9 @@ export default function ExperienceSection() {
 
         {/* Education 1: University of Ottawa */}
         
+        
         <a
+        id="uottawa-experience"
           href="https://www.uottawa.ca"
           target="_blank"
           rel="noopener noreferrer"
