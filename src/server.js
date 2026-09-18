@@ -98,7 +98,7 @@ app.post('/api/question-answer', async (req, res) => {
 
   try {
     const response = await hf.chatCompletion({
-      model: "Qwen/Qwen2.5-72B-Instruct",
+      model: "meta-llama/Meta-Llama-3-8B-Instruct",
       messages: [
         { role: "system", content: sys_content },
         { role: "user", content: input }
