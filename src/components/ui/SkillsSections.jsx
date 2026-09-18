@@ -48,8 +48,11 @@ export default function SkillsSection({ skills }) {
             className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(25%-1.125rem)] lg:w-[calc(16.666%-1.25rem)] aspect-square border-2 border-dashed border-primary rounded flex items-center justify-center cursor-pointer hover:shadow-lg transition-shadow select-none bg-white"
             role="button"
             tabIndex={0}
-            onKeyPress={(e) => {
-              if (e.key === "Enter" || e.key === " ") setShowAll(!showAll);
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setShowAll(!showAll);
+              }
             }}
             aria-label={showAll ? "Show less skills" : "Show more skills"}
           >

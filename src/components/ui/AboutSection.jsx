@@ -52,24 +52,31 @@ const milestones = [
   },
   {
     id: 8,
-    date: "Jul 2026 - Present",
+    date: "Jul 2026 - Aug 2026",
     title: "UI/UX Developer Intern",
     subtitle: "RoboGarden",
     description: "Authored technical reviews for 10 online courses, built high-fidelity Figma prototypes for interactive table-editing interfaces, and worked with Angular and full-stack development.",
-    current: true,
   },
   {
     id: 9,
-    date: "Fall 2026 - Expected 2028",
+    date: "Sep 2026 - Present",
     title: "Master of Computer Science",
     subtitle: "University of Ottawa",
-    description: "Enrolling as a graduate student concentrating in Applied Artificial Intelligence.",
-    upcoming: true,
+    description: "Pursuing a graduate degree concentrating in Applied Artificial Intelligence.",
+    current: true,
+  },
+  {
+    id: 10,
+    date: "Sep 2026 - Present",
+    title: "Website Developer",
+    subtitle: "Public Health Agency of Canada (PHAC)",
+    description: "Developing a modern survey table system to support public health operations.",
+    current: true,
   },
 ];
 
 const AboutSection = () => {
-  const [activeId, setActiveId] = useState(8);
+  const [activeId, setActiveId] = useState(9);
   const currentItemRef = useRef(null);
 
   useEffect(() => {
@@ -84,12 +91,12 @@ const AboutSection = () => {
       <div className="w-full lg:flex-1 flex flex-col justify-center min-w-0">
         <div className="max-h-[450px] overflow-y-auto pr-2 sm:pr-4 scrollbar-thin scrollbar-thumb-primary/30 scrollbar-track-transparent">
           <div className="relative border-l-2 border-gray-300 ml-4 sm:ml-6 space-y-8 py-2">
-            {/* Solid primary line overlay for completed/current section up to RoboGarden */}
-            <div className="absolute top-0 left-[-2px] w-[2px] bg-primary h-[calc(83%)] pointer-events-none" />
+            {/* Solid primary line overlay up to current milestones */}
+            <div className="absolute top-0 left-[-2px] w-[2px] bg-primary h-[calc(90%)] pointer-events-none" />
 
             {milestones.map((item) => {
               const isActive = activeId === item.id;
-              const isPastOrCurrent = item.id <= 8;
+              const isPastOrCurrent = item.id <= 10;
 
               return (
                 <div 
@@ -120,11 +127,6 @@ const AboutSection = () => {
                     {item.current && (
                       <span className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
                         Current
-                      </span>
-                    )}
-                    {item.upcoming && (
-                      <span className="absolute top-4 right-4 bg-gray-200 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                        Upcoming
                       </span>
                     )}
 
@@ -159,7 +161,7 @@ const AboutSection = () => {
 
         <div className="space-y-6 text-center lg:text-left">
           <p className="text-base font-normal font-sora text-secondary leading-6">
-            I am a Master of Computer Science student at the University of Ottawa concentrating in Applied Artificial Intelligence, having previously earned a Bachelor of Science with a double major in Computer Science and Biology from the University of Alberta. I have a strong foundation in artificial intelligence, natural language processing, and software engineering through both academic and hands-on professional roles as a UI/UX Developer at RoboGarden and an AI Researcher at TMIC Wishart Node.
+            I am currently pursuing a Master of Computer Science at the University of Ottawa concentrating in Applied Artificial Intelligence, having previously earned a Bachelor of Science with a double major in Computer Science and Biology from the University of Alberta. I have a strong foundation in artificial intelligence, natural language processing, and software engineering through professional roles as a Website Developer at the Public Health Agency of Canada (PHAC), a UI/UX Developer Intern at RoboGarden, and an AI Researcher at TMIC Wishart Node.
           </p>
 
           <p className="text-base font-normal font-sora text-secondary leading-6">

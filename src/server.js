@@ -28,7 +28,7 @@ Skills
 
 Education
 
-University of Ottawa | Sep 2026 – Expected 2028
+University of Ottawa | Sep 2026 – Present
 Master of Computer Science, Concentration in Applied Artificial Intelligence
 
 University of Alberta | Sept 2020 – Jun 2025
@@ -37,7 +37,10 @@ Relevant coursework: search algorithms, supervised learning, unsupervised learni
 
 Experience
 
-UI/UX Developer | RoboGarden | Jul 2026 – Present
+Website Developer | Public Health Agency of Canada (PHAC) | Sep 2026 – Present
+• Developing a modern survey table system to support public health operations and robust application workflows.
+
+UI/UX Developer | RoboGarden | Jul 2026 – Aug 2026
 • Authored technical review reports for 10 online courses, evaluating course design, quiz UX, and content structure
 • Designed high-fidelity Figma prototypes for an interactive table-editing interface with a focus on usability and accessibility
 • Developed a pagination table application with full CRUD functionality

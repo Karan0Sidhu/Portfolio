@@ -1,21 +1,27 @@
-// app/page.js (or pages/index.js)
+// app/page.jsx
 "use client";
 import React, { useState, useEffect } from 'react';
-import Button from '@/components/ui/Button';
-import EditText from '@/components/ui/EditText';
 import Header from "@/components/ui/Header";
 import HeroSection from "@/components/ui/HeroSection";
-import SkillsSection from '@/components/ui/SkillsSections';
-import ExperienceSection from '@/components/ui/ExperienceSection';
-import AboutSection from '@/components/ui/AboutSection';
-import ProjectsSection from '@/components/ui/ProjectSection';
-import ChatbotSection from '@/components/ui/ChatBotSection';
-import ContactSection from '@/components/ui/ContactSection';
+import SkillsSection from "@/components/ui/SkillsSections";
+import ExperienceSection from "@/components/ui/ExperienceSection";
+import AboutSection from "@/components/ui/AboutSection";
+import ProjectsSection from "@/components/ui/ProjectSection";
+import ChatbotSection from "@/components/ui/ChatBotSection";
+import ContactSection from "@/components/ui/ContactSection";
 import axios from 'axios';
 
-const Home = () => {useEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
+// Pre-defined chatbot responses to keep code modular
+const BOT_RESPONSES = {
+  projects: `Karan Sidhu has built diverse projects across full-stack development and artificial intelligence. Highlights include: 1. ChemFont Fact Finder (Knowledge graph text-mining pipeline with HuggingFace and Neo4j), 2. AppSignal-Replicate (Cost-effective server performance monitoring tool with automated log analysis), 3. Event QR Check-in App (Android event management tool built with Firebase), and 4. Portfolio Chatbot Website (Responsive React and Tailwind CSS web application).`,
+  about: `Karan Sidhu is pursuing a Master of Computer Science with a concentration in Applied Artificial Intelligence at the University of Ottawa, having previously earned a Bachelor of Science with a double major in Computer Science and Biology from the University of Alberta.`,
+  experience: `Karan's professional experience includes: 1. Website Developer at the Public Health Agency of Canada (PHAC) building survey table systems, 2. UI/UX Developer Intern at RoboGarden developing Figma prototypes and Angular components, and 3. AI/Software Developer at TMIC Wishart Node developing RAG pipelines and knowledge graph extraction models.`
+};
+
+export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   const [StartChat, setStartChat] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
@@ -23,10 +29,10 @@ const Home = () => {useEffect(() => {
   const [oldChatbotChats, setOldChatbotChats] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // Interleave messages safely
   const allMessages = [];
   const maxLength = Math.max(oldChat.length, oldChatbotChats.length);
   
-  // Interleave messages[cite: 1]
   for (let i = 0; i < maxLength; i++) {
     if (oldChat[i]) {
       allMessages.push({ text: oldChat[i], sender: 'user' });
@@ -46,16 +52,18 @@ const Home = () => {useEffect(() => {
     setChatMessage('');
     setLoading(true);
 
-    const API_URL = import.meta.env.DEV ? 'http://localhost:3000' : '';
+    // Use Next.js standard environment variable setup
+    const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
 
     try {
       const response = await axios.post(`${API_URL}/api/question-answer`, {
         input: currentMessage
       });
-      setOldChatbotChats(prev => [...prev, response.data.choices[0].message.content]);
+      const botReply = response.data?.choices?.[0]?.message?.content || "No response received.";
+      setOldChatbotChats(prev => [...prev, botReply]);
     } catch (err) {
-      console.error("❌ Error:", err);
-      setOldChatbotChats(prev => [...prev, `Error: ${err.message}`]);
+      console.error("❌ Chat Error:", err);
+      setOldChatbotChats(prev => [...prev, `Error: ${err.message || "Failed to fetch response"}`]);
     } finally {
       setLoading(false);
     }
@@ -63,25 +71,22 @@ const Home = () => {useEffect(() => {
 
   const chatBotOptionClick1 = () => {
     setStartChat(true);
-    setOldChat(['What Projects has Karan Sidhu done?']);
-    setOldChatbotChats(prev => [...prev, `Karan Sidhu has worked on several projects that showcase his skills in AI, full-stack development, and research. Here are some of the projects he has completed: 1. ChemFont Fact Finder: Designed and implemented a pipeline to extract triplets from research articles, improving knowledge graph accuracy and refining evaluation metrics. 2. AppSignal-Replicate: Engineered a lightweight, free alternative to AppSignal for performance monitoring and error tracking across multi-server environments with automated log analysis over SSH. 3. Event QR Check-in App: Designed and developed an Android-based event management app using Android Studio and Firebase with QR code generation and scanning features. 4. Portfolio Chatbot Website: Built a modern, responsive AI chatbot website using React 18, Vite, and Tailwind CSS with dynamic routing and modular architecture.`]);
+    setOldChat(prev => [...prev, 'What Projects has Karan done?']);
+    setOldChatbotChats(prev => [...prev, BOT_RESPONSES.projects]);
     setChatMessage('');
   };
 
   const chatBotOptionClick2 = () => {
     setStartChat(true);
-    setOldChat(['Tell Me About Karan Sidhu?']);
-    setOldChatbotChats(prev => [...prev, `Karan Sidhu is a Master of Computer Science student at the University of Ottawa concentrating in Applied Artificial Intelligence, having previously earned a Bachelor of Science with a double major in Computer Science and Biology from the University of Alberta. He has hands-on professional experience as a UI/UX Developer at RoboGarden, a Website/Business Developer at Bless Rhoo Day Care, and an AI Researcher at TMIC Wishart Node. His technical expertise spans Python, Java, ReactJS, Angular, HTML5, CSS3, C, SQL, MongoDB, Firebase, Neo4j, PyTorch, TensorFlow, Hugging Face, and Figma.`]);
+    setOldChat(prev => [...prev, 'Tell Me About Karan Sidhu\'s Background?']);
+    setOldChatbotChats(prev => [...prev, BOT_RESPONSES.about]);
     setChatMessage('');
   };
 
   const chatBotOptionClick3 = () => {
     setStartChat(true);
-    setOldChat(["What is Karan Sidhu's experience?"]);
-    setOldChatbotChats(prev => [...prev, `Karan Sidhu has professional experience across development, AI, and research: 
-1. UI/UX Developer at RoboGarden (Jul 2026 – Present): Authored technical course reviews, designed high-fidelity Figma prototypes for interactive table-editing interfaces, built a pagination table application with full CRUD functionality, and created user flows for the RoadMap project.
-2. Website/Business Developer at BlessRhooDayCare (Apr 2026 – Jun 2026): Designed and deployed a responsive business website using React, TypeScript, and Tailwind CSS with integrated Google Maps and custom form validation.
-3. AI/Software Developer at TMIC Wishart Node (May 2024 – Sep 2024): Built an AI pipeline to extract triplets from research articles for knowledge graph construction, fine-tuned HuggingFace models (improving relation extraction accuracy by 14.6%), engineered a performance monitoring alternative to AppSignal, and designed custom GPT chatbots.`]);
+    setOldChat(prev => [...prev, "What is Karan's experience?"]);
+    setOldChatbotChats(prev => [...prev, BOT_RESPONSES.experience]);
     setChatMessage('');
   };
 
@@ -143,8 +148,24 @@ const Home = () => {useEffect(() => {
     }
   ];
 
-  const jobTitles = ['Software', 'UI/UX', 'Artificial Intelligence', 'Website', 'Back-end', 'Front-end', 'Full-stack', 'Machine Learning', 'Application', 'Research', 'Android', 'Tech', 'DevOps', 'Mobile'];
-
+const jobTitles = [
+    'Software', 
+    'Applied AI', 
+    'UI/UX', 
+    'Artificial Intelligence', 
+    'Website', 
+    'Back-end', 
+    'Front-end', 
+    'Full-stack', 
+    'Machine Learning', 
+    'Application', 
+    'Research', 
+    'Data Science',
+    'Android', 
+    'Tech', 
+    'DevOps', 
+    'Mobile'
+  ];
   return (
     <div className="min-h-screen bg-white pt-20">
       <Header />
@@ -183,5 +204,3 @@ const Home = () => {useEffect(() => {
     </div>
   );
 };
-
-export default Home;

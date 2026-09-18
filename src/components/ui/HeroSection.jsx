@@ -114,10 +114,10 @@ export default function HeroSection({
                 onClick={() => { navigator.clipboard.writeText('karan02sidhu@gmail.com'); }}
                 aria-label="Copy Email"
             >
-                <img src="/images/img_social_icons_black_900.svg" alt="Copy Email" className="w-6 h-6" />
+                <img src="/images/icons8-gmail-50.png" alt="Copy Email" className="w-6 h-6" />
             </button>
             <button
-                type="button"
+                type="button"s
                 className="w-14 h-14 border-2 border-primary rounded flex items-center justify-center hover:bg-primary hover:bg-opacity-10 hover:text-white transition-all flex-shrink-0"
                 style={{ backgroundColor: 'transparent' }}
                 onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.3)'}
@@ -144,16 +144,16 @@ export default function HeroSection({
             <div 
               onClick={(e) => {
                 e.preventDefault();
-                const elem = document.getElementById("robogarden-experience");
+                const elem = document.getElementById("phac-experience");
                 if (elem) elem.scrollIntoView({ behavior: 'smooth' });
               }} 
               className="block p-3 sm:p-3.5 rounded-xl border border-black bg-background hover:bg-primary/5 transition-all cursor-pointer box-border"
             >
               <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-1 sm:gap-0">
-                <h4 className="font-bold text-primary text-sm font-sora underline decoration-primary/50">UI/UX Developer Intern</h4>
-                <span className="text-xs text-secondary flex-shrink-0">July 2026 - Present</span>
+                <h4 className="font-bold text-primary text-sm font-sora underline decoration-primary/50">Website Developer</h4>
+                <span className="text-xs text-secondary flex-shrink-0">Sept 2026 - Present</span>
               </div>
-              <p className="text-xs text-secondary mt-1">RoboGarden • Full-stack development & interface design</p>
+              <p className="text-xs text-secondary mt-1">Public Health Agency of Canada (PHAC) • Survey table systems</p>
             </div>
 
             <div 
@@ -166,7 +166,7 @@ export default function HeroSection({
             >
               <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-1 sm:gap-0">
                 <h4 className="font-bold text-primary text-sm font-sora underline decoration-primary/50">M.Sc. in Computer Science (Applied AI)</h4>
-                <span className="text-xs text-secondary flex-shrink-0">Starting Sept 2026</span>
+                <span className="text-xs text-secondary flex-shrink-0">Sept 2026 - Present</span>
               </div>
               <p className="text-xs text-secondary mt-1">University of Ottawa • B.Sc. from UAlberta (2025)</p>
             </div>

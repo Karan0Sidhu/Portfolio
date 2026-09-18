@@ -93,7 +93,7 @@ const ContactSection = () => {
               }, {
                 href: null,
                 alt: 'Copy Email',
-                src: '/images/img_social_icons_black_900.svg',
+                src: '/images/icons8-gmail-50.png',
                 onClick: () => navigator.clipboard.writeText('karan02sidhu@gmail.com'),
               }, {
                 href: null,

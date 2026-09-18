@@ -16,7 +16,79 @@ export default function ExperienceSection() {
           </div>
         </div>
 
-        {/* Experience 1: RoboGarden */}
+        {/* Experience 1: Public Health Agency of Canada (PHAC) */}
+        <a
+          id="phac-experience"
+          href="https://www.canada.ca/en/public-health.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block border border-secondary rounded-lg p-6 sm:p-8 mb-8 hover:shadow-lg transition-shadow bg-primary/50"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6 hover:opacity-80 transition-opacity">
+            <img
+              src="/images/ajfFKzZD_400x400.jpg"
+              alt="Public Health Agency of Canada"
+              className="w-12 h-12 rounded-lg flex-shrink-0 object-contain bg-white p-1"
+            />
+            <div className="flex-1">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2 sm:gap-0">
+                <div className="flex items-center gap-4">
+                  <img
+                    src="/images/img_google.svg"
+                    alt="Company Icon"
+                    className="w-8 h-8"
+                  />
+                  <h3 className="text-xl sm:text-2xl font-semibold font-sora text-white">
+                    Website Developer at Public Health Agency of Canada (PHAC)
+                  </h3>
+                </div>
+                <span className="text-sm sm:text-base font-semibold font-sora text-light whitespace-nowrap">
+                  Sep 2026 – Present
+                </span>
+              </div>
+              <p className="text-sm sm:text-base font-normal font-sora text-light leading-6">
+                Developing a survey table system to support public health operations, building modern web interfaces and ensuring robust application structure.
+              </p>
+            </div>
+          </div>
+        </a>
+
+                {/* Education 1: University of Ottawa */}
+        <a
+          id="uottawa-experience"
+          href="https://www.uottawa.ca"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block border border-secondary rounded-lg p-6 sm:p-8 mb-8 hover:shadow-lg transition-shadow"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6 hover:opacity-80 transition-opacity">
+            <div className="w-14 h-14 flex items-center justify-center bg-white rounded-lg p-1">
+              <img src="/images/img_uottawa.png" alt="University of Ottawa" className="w-full h-full object-contain" />
+            </div>
+            <div className="flex-1">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2 sm:gap-0">
+                <div className="flex items-center gap-4">
+                  <img
+                    src="/images/img_google.svg"
+                    alt="University"
+                    className="w-8 h-8"
+                  />
+                  <h3 className="text-xl sm:text-2xl font-semibold font-sora text-white">
+                    Master of Computer Science - Concentration in Applied Artificial Intelligence
+                  </h3>
+                </div>
+                <span className="text-sm sm:text-base font-semibold font-sora text-light whitespace-nowrap">
+                  Sep 2026 - Expected 2028
+                </span>
+              </div>
+              <p className="text-sm sm:text-base font-normal font-sora text-light leading-6">
+                Enrolling as a graduate student focusing on advanced concepts in applied artificial intelligence, intelligent systems, and cutting-edge software engineering paradigms.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        {/* Experience 2: RoboGarden */}
         <a
           id="robogarden-experience"
           href="https://www.robogarden.ca"
@@ -28,7 +100,7 @@ export default function ExperienceSection() {
             <img
               src="/images/img_robogarden.png"
               alt="RoboGarden"
-              className="w-12 h-12 rounded-lg flex-shrink-0 object-contain"
+              className="w-12 h-12 rounded-lg flex-shrink-0 object-contain bg-white p-1"
             />
             <div className="flex-1">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2 sm:gap-0">
@@ -39,11 +111,11 @@ export default function ExperienceSection() {
                     className="w-8 h-8"
                   />
                   <h3 className="text-xl sm:text-2xl font-semibold font-sora text-white">
-                    UI/UX Developer at RoboGarden
+                    UI/UX Developer Intern at RoboGarden
                   </h3>
                 </div>
                 <span className="text-sm sm:text-base font-semibold font-sora text-light whitespace-nowrap">
-                  Jul 2026 – Present
+                  Jul 2026 – Aug 2026
                 </span>
               </div>
               <p className="text-sm sm:text-base font-normal font-sora text-light leading-6">
@@ -53,7 +125,7 @@ export default function ExperienceSection() {
           </div>
         </a>
 
-        {/* Experience 2: Bless Rhoo Day Care */}
+        {/* Experience 3: Bless Rhoo Day Care */}
         <a
           href="https://blessrhoodaycare.netlify.app"
           target="_blank"
@@ -64,7 +136,7 @@ export default function ExperienceSection() {
             <img
               src="/images/img_blessrhoo.png"
               alt="Bless Rhoo Day Care"
-              className="w-12 h-12 rounded-lg flex-shrink-0 object-contain"
+              className="w-12 h-12 rounded-lg flex-shrink-0 object-contain bg-white p-1"
             />
             <div className="flex-1">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2 sm:gap-0">
@@ -89,7 +161,7 @@ export default function ExperienceSection() {
           </div>
         </a>
 
-        {/* Experience 3: WishartLab */}
+        {/* Experience 4: WishartLab */}
         <a 
           href="https://www.wishartlab.com/"
           target="_blank"
@@ -100,7 +172,7 @@ export default function ExperienceSection() {
             <img
               src="/images/img_image_1.png"
               alt="WishartLab"
-              className="w-12 h-12 rounded-lg flex-shrink-0"
+              className="w-12 h-12 rounded-lg flex-shrink-0 bg-white p-1 object-contain"
             />
             <div className="flex-1">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2 sm:gap-0">
@@ -136,43 +208,6 @@ export default function ExperienceSection() {
           </div>
         </a>
 
-        {/* Education 1: University of Ottawa */}
-        
-        
-        <a
-        id="uottawa-experience"
-          href="https://www.uottawa.ca"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block border border-secondary rounded-lg p-6 sm:p-8 mb-8 hover:shadow-lg transition-shadow"
-        >
-          <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6 hover:opacity-80 transition-opacity">
-            <div className="w-14 h-14 flex items-center justify-center">
-              <img src="/images/img_uottawa.png" alt="University of Ottawa" className="w-full h-full object-contain" />
-            </div>
-            <div className="flex-1">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2 sm:gap-0">
-                <div className="flex items-center gap-4">
-                  <img
-                    src="/images/img_google.svg"
-                    alt="University"
-                    className="w-8 h-8"
-                  />
-                  <h3 className="text-xl sm:text-2xl font-semibold font-sora text-white">
-                    Master of Computer Science - Concentration in Applied Artificial Intelligence
-                  </h3>
-                </div>
-                <span className="text-sm sm:text-base font-semibold font-sora text-light whitespace-nowrap">
-                  Sep 2026 - Expected 2028
-                </span>
-              </div>
-              <p className="text-sm sm:text-base font-normal font-sora text-light leading-6">
-                Enrolling as a graduate student focusing on advanced concepts in applied artificial intelligence, intelligent systems, and cutting-edge software engineering paradigms.
-              </p>
-            </div>
-          </div>
-        </a>
-
         {/* Education 2: University of Alberta */}
         <a
           href="https://www.ualberta.ca/en/index.html"
@@ -181,7 +216,7 @@ export default function ExperienceSection() {
           className="block border border-secondary rounded-lg p-6 sm:p-8 hover:shadow-lg transition-shadow"
         >
           <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6 hover:opacity-80 transition-opacity">
-            <div className="w-14 h-14 flex items-center justify-center">
+            <div className="w-14 h-14 flex items-center justify-center bg-white rounded-lg p-1">
               <img src="/images/img_image_772.png" alt="University" className="w-full h-full object-contain" />
             </div>
             <div className="flex-1">
