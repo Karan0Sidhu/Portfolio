@@ -62,15 +62,15 @@ const milestones = [
     date: "Sep 2026 - Present",
     title: "Master of Computer Science",
     subtitle: "University of Ottawa",
-    description: "Pursuing a graduate degree concentrating in Applied Artificial Intelligence.",
+    description: "Pursuing a graduate degree concentrating in Applied Artificial Intelligence. Current courses: Machine Learning, AI/ML for Software Engineering, and Computer Vision. Next semester: Natural Language Processing, AI for Bioinformatics, and AI Ethics.",
     current: true,
   },
   {
     id: 10,
     date: "Sep 2026 - Present",
-    title: "Website Developer",
+    title: "Backend Website Developer",
     subtitle: "Public Health Agency of Canada (PHAC)",
-    description: "Developing a modern survey table system to support public health operations.",
+    description: "Building a Cycle Survey Information Tool with protected-data-aware LLM summaries, synthetic datasets, and secure backend workflows.",
     current: true,
   },
 ];
@@ -161,7 +161,7 @@ const AboutSection = () => {
 
         <div className="space-y-6 text-center lg:text-left">
           <p className="text-base font-normal font-sora text-secondary leading-6">
-            I am currently pursuing a Master of Computer Science at the University of Ottawa concentrating in Applied Artificial Intelligence, having previously earned a Bachelor of Science with a double major in Computer Science and Biology from the University of Alberta. I have a strong foundation in artificial intelligence, natural language processing, and software engineering through professional roles as a Website Developer at the Public Health Agency of Canada (PHAC), a UI/UX Developer Intern at RoboGarden, and an AI Researcher at TMIC Wishart Node.
+            I am currently pursuing a Master of Computer Science at the University of Ottawa concentrating in Applied Artificial Intelligence, having previously earned a Bachelor of Science with a double major in Computer Science and Biology from the University of Alberta. I have a strong foundation in artificial intelligence, natural language processing, and software engineering through professional roles at the Public Health Agency of Canada (PHAC), RoboGarden, Bless Rhoo Day Care, and TMIC Wishart Node.
           </p>
 
           <p className="text-base font-normal font-sora text-secondary leading-6">

@@ -76,7 +76,7 @@ export default function HeroSection({
         </div>
 
         <p className="text-base sm:text-lg font-normal font-sora text-secondary leading-6 mb-12 max-w-2xl">
-            I am Karan Sidhu, a Master of Computer Science student at the University of Ottawa concentrating in Applied Artificial Intelligence, having previously earned a Bachelor of Science with a double major in Computer Science and Biology from the University of Alberta. I have hands-on experience in AI research, software development, and full-stack technologies, specializing in Python, Java, React, machine learning model fine-tuning, and database management.
+            I am Karan Sidhu, a Master of Computer Science student at the University of Ottawa concentrating in Applied Artificial Intelligence, with a Bachelor of Science double major in Computer Science and Biology from the University of Alberta. I have hands-on experience in LLM applications, AI research, backend development, UI/UX design, and full-stack technologies.
         </p>
 
         {/* Social Buttons */}
@@ -153,7 +153,7 @@ export default function HeroSection({
                 <h4 className="font-bold text-primary text-sm font-sora underline decoration-primary/50">Website Developer</h4>
                 <span className="text-xs text-secondary flex-shrink-0">Sept 2026 - Present</span>
               </div>
-              <p className="text-xs text-secondary mt-1">Public Health Agency of Canada (PHAC) • Survey table systems</p>
+              <p className="text-xs text-secondary mt-1">Public Health Agency of Canada (PHAC) • Survey Information Tool</p>
             </div>
 
             <div 

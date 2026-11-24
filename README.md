@@ -38,14 +38,21 @@ yarn install
 Create a `.env` file in the project root:
 
 ```env
-HF_API_TOKEN=your_huggingface_api_token
+CLOUDFLARE_ACCOUNT_ID=your_cloudflare_account_id
+CLOUDFLARE_API_TOKEN=your_cloudflare_workers_ai_token
 ```
+
+Get both values from **Cloudflare Dashboard → Workers AI → Use REST API**.
+The token should be created with the Workers AI permissions shown there.
 
 ### 3. Start the development server
 
 ```bash
-npm run dev
+npm.cmd run dev
 ```
+
+Open the Vite URL shown in the terminal. The development command also starts
+the Express API server, which is required for chatbot requests.
 
 ---
 
@@ -105,14 +112,31 @@ npm run build
 dist
 ```
 
-4. Add the required environment variables in **Site Settings → Environment Variables**.
+4. Add `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` in
+   **Site configuration → Environment variables**, then redeploy.
+
+Workers AI's Free plan currently includes 10,000 Neurons per day. Once that
+allowance is reached, requests stop until the daily reset.
 
 ### Preview a production build locally
 
 ```bash
-npm run build
-npm run preview
+npm.cmd run build
+npm.cmd run start
 ```
+
+Open `http://localhost:3000`. `npm.cmd run preview` serves only the static
+frontend and does not run the chatbot API.
+
+---
+
+## AI Use Disclosure
+
+Claude, Google Gemini, ChatGPT, and GitHub Copilot were used as AI assistants
+during the development and updating of this website. They supported brainstorming,
+drafting and refining code and portfolio content, troubleshooting, and documentation.
+AI-generated suggestions were reviewed and tested, and the site owner is responsible
+for the final content and implementation.
 
 ---
 
@@ -120,7 +144,7 @@ npm run preview
 
 - Built with **React**, **Vite**, and **Tailwind CSS**
 - Powered by **Netlify Functions**
-- AI integration using the **Hugging Face API**
+- Chatbot inference using **Cloudflare Workers AI**
 
 ### Design Assets
 

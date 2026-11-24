@@ -17,7 +17,6 @@
   "dependencies": {
     "@dhiwise/component-tagger": "^1.0.9",
     "@emailjs/browser": "^4.4.1",
-    "@huggingface/inference": "^4.0.6",
     "@tailwindcss/typography": "^0.5.16",
     "axios": "^1.10.0",
     "body-parser": "^2.2.0",

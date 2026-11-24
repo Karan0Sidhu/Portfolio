@@ -14,8 +14,8 @@ import axios from 'axios';
 // Pre-defined chatbot responses to keep code modular
 const BOT_RESPONSES = {
   projects: `Karan Sidhu has built diverse projects across full-stack development and artificial intelligence. Highlights include: 1. ChemFont Fact Finder (Knowledge graph text-mining pipeline with HuggingFace and Neo4j), 2. AppSignal-Replicate (Cost-effective server performance monitoring tool with automated log analysis), 3. Event QR Check-in App (Android event management tool built with Firebase), and 4. Portfolio Chatbot Website (Responsive React and Tailwind CSS web application).`,
-  about: `Karan Sidhu is pursuing a Master of Computer Science with a concentration in Applied Artificial Intelligence at the University of Ottawa, having previously earned a Bachelor of Science with a double major in Computer Science and Biology from the University of Alberta.`,
-  experience: `Karan's professional experience includes: 1. Website Developer at the Public Health Agency of Canada (PHAC) building survey table systems, 2. UI/UX Developer Intern at RoboGarden developing Figma prototypes and Angular components, and 3. AI/Software Developer at TMIC Wishart Node developing RAG pipelines and knowledge graph extraction models.`
+  about: `Karan Sidhu is pursuing a Master of Computer Science with a concentration in Applied Artificial Intelligence at the University of Ottawa, having previously earned a Bachelor of Science with a double major in Computer Science and Biology from the University of Alberta. His current courses are Machine Learning, AI/ML for Software Engineering, and Computer Vision. Next semester, he plans to take Natural Language Processing, AI for Bioinformatics, and AI Ethics.`,
+  experience: `Karan's professional experience includes: 1. Backend Website Developer at the Public Health Agency of Canada (PHAC) building a protected-data-aware Cycle Survey Information Tool with LLM summaries, 2. UI/UX Developer Intern at RoboGarden building Figma prototypes and Angular features, 3. Website/Business Developer at Bless Rhoo Day Care, and 4. AI/Software Developer at TMIC Wishart Node fine-tuning relation extraction models and building knowledge graph pipelines.`
 };
 
 export default function Home() {
@@ -62,8 +62,17 @@ export default function Home() {
       const botReply = response.data?.choices?.[0]?.message?.content || "No response received.";
       setOldChatbotChats(prev => [...prev, botReply]);
     } catch (err) {
-      console.error("❌ Chat Error:", err);
-      setOldChatbotChats(prev => [...prev, `Error: ${err.message || "Failed to fetch response"}`]);
+      console.error("Chat error:", err);
+      const errorMessage = axios.isAxiosError(err)
+        ? typeof err.response?.data?.message === 'string'
+          ? err.response.data.message
+          : err.response
+            ? `Chat service returned HTTP ${err.response.status}.`
+            : "Could not connect to the chat service."
+        : err instanceof Error
+          ? err.message
+          : "An unexpected chatbot error occurred.";
+      setOldChatbotChats(prev => [...prev, `Error: ${errorMessage}`]);
     } finally {
       setLoading(false);
     }
@@ -94,6 +103,8 @@ export default function Home() {
     { name: 'JavaScript', icon: '/images/img_iconjavscript.svg' },
     { name: 'TypeScript', icon: '/images/img_logos_typescript.svg' },
     { name: 'Python', icon: '/images/img_logos_pythonplain.svg' },
+    { name: 'scikit-learn', icon: '/images/scikitlearn.svg' },
+    { name: 'NumPy', icon: '/images/NumPy.svg' },
     { name: 'Java', icon: '/images/img_logos_javaplain.svg' },
     { name: 'C', icon: '/images/img_logos_cplain.svg' },
     { name: 'React', icon: '/images/img_logos_reactoriginal.svg' },

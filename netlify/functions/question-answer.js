@@ -1,6 +1,4 @@
-import { InferenceClient } from '@huggingface/inference';
-
-const hf = new InferenceClient(process.env.HF_API_TOKEN);
+import { chatWithCloudflare } from '../../src/cloudflareAI.js';
 
 const sys_content = `
 You are Karan's portfolio assistant. Speak in a friendly, confident tone. Highlight Karan's strengths in AI, full-stack development, UI/UX design, and research. Use his resume to answer questions.
@@ -10,6 +8,8 @@ karan02sidhu@gmail.com | 780-782-0840 | Edmonton, AB | LinkedIn
 Education
 University of Ottawa Sep. 2026 – Expected 2028
 Master of Computer Science Concentration in Applied Artificial Intelligence
+Current courses: Machine Learning, AI/ML for Software Engineering, and Computer Vision.
+Next semester: Natural Language Processing (NLP), AI for Bioinformatics, and AI Ethics.
 University of Alberta Sept 2020 - Jun 2025
 Bachelor of Science | GPA: 3.3 Double Major in Computer Science and Biology
 Relevant Coursework: search algorithms, supervised learning, unsupervised learning,
@@ -25,8 +25,10 @@ Software: git, GitHub, bitbucket, Huggingface, Pytorch, Tensorflow, linux comman
 scripting
 Design: Figma, UI/UX design, wireframing, user flow design, Responsive Design
 Experience
-Public Health Agency of Canada (PHAC)| Website Developer Sept 2026 - Present
-● Developing a survey table system.
+Public Health Agency of Canada (PHAC)| Backend Website Developer Sept 2026 - Present
+● Collaborated with supervisors, clients, and front-end developers to build a Cycle Survey Information Tool.
+● Applied large language models to generate protected-data-aware summaries.
+● Created synthetic datasets for prototype testing without exposing sensitive records.
 RoboGarden | UI/UX Developer Jul 2026 - Aug 2026
 ● Authored technical review reports for 10 online courses (8 CodingVille, 2 UpSkilling),
 evaluating course design, quiz UX, and content structure.
@@ -109,17 +111,37 @@ export async function handler(event, context) {
     };
   }
 
+  let input;
   try {
-    const { input } = JSON.parse(event.body);
+    input = JSON.parse(event.body || '{}').input;
+  } catch {
+    return {
+      statusCode: 400,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'Request body must be valid JSON.' }),
+    };
+  }
 
-    const response = await hf.chatCompletion({
-      model: "Qwen/Qwen2.5-72B-Instruct",
-      messages: [
-        { role: "system", content: sys_content },
-        { role: "user", content: input }
-      ],
-      max_tokens: 500
-    });
+  if (typeof input !== 'string' || !input.trim()) {
+    return {
+      statusCode: 400,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'A non-empty input string is required.' }),
+    };
+  }
+  if (input.length > 2000) {
+    return {
+      statusCode: 413,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'Please keep your question under 2,000 characters.' }),
+    };
+  }
+
+  try {
+    const response = await chatWithCloudflare([
+      { role: "system", content: sys_content },
+      { role: "user", content: input.trim() }
+    ]);
 
     return {
       statusCode: 200,
@@ -127,9 +149,10 @@ export async function handler(event, context) {
       body: JSON.stringify(response),
     };
   } catch (err) {
-    console.error('🔴 Hugging Face error:', err);
+    console.error('Cloudflare Workers AI error:', err);
     return {
-      statusCode: 500,
+      statusCode: 502,
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: `Error in backend: ${err.message}` }),
     };
   }

@@ -39,7 +39,7 @@ export default function ExperienceSection() {
                     className="w-8 h-8"
                   />
                   <h3 className="text-xl sm:text-2xl font-semibold font-sora text-white">
-                    Website Developer at Public Health Agency of Canada (PHAC)
+                        Backend Website Developer at Public Health Agency of Canada (PHAC)
                   </h3>
                 </div>
                 <span className="text-sm sm:text-base font-semibold font-sora text-light whitespace-nowrap">
@@ -47,7 +47,7 @@ export default function ExperienceSection() {
                 </span>
               </div>
               <p className="text-sm sm:text-base font-normal font-sora text-light leading-6">
-                Developing a survey table system to support public health operations, building modern web interfaces and ensuring robust application structure.
+                Collaborating with supervisors, clients, and front-end developers to build a Cycle Survey Information Tool. Applying large language models to generate protected-data-aware summaries, creating synthetic datasets for safe prototype testing, coordinating weekly deliverables across teams, and presenting the tool to staff for feedback and feature planning.
               </p>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function ExperienceSection() {
                 </span>
               </div>
               <p className="text-sm sm:text-base font-normal font-sora text-light leading-6">
-                Enrolling as a graduate student focusing on advanced concepts in applied artificial intelligence, intelligent systems, and cutting-edge software engineering paradigms.
+                Current courses: Machine Learning, AI/ML for Software Engineering, and Computer Vision. Next semester: Natural Language Processing (NLP), AI for Bioinformatics, and AI Ethics.
               </p>
             </div>
           </div>

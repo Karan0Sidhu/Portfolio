@@ -6,7 +6,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { InferenceClient } from '@huggingface/inference';
+import { chatWithCloudflare } from './cloudflareAI.js';
 
 // Recreate __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -20,6 +20,8 @@ karan02sidhu@gmail.com | 780-782-0840 | Edmonton, AB | LinkedIn
 Education
 University of Ottawa Sep. 2026 – Expected 2028
 Master of Computer Science Concentration in Applied Artificial Intelligence
+Current courses: Machine Learning, AI/ML for Software Engineering, and Computer Vision.
+Next semester: Natural Language Processing (NLP), AI for Bioinformatics, and AI Ethics.
 University of Alberta Sept 2020 - Jun 2025
 Bachelor of Science | GPA: 3.3 Double Major in Computer Science and Biology
 Relevant Coursework: search algorithms, supervised learning, unsupervised learning,
@@ -35,8 +37,12 @@ Software: git, GitHub, bitbucket, Huggingface, Pytorch, Tensorflow, linux comman
 scripting
 Design: Figma, UI/UX design, wireframing, user flow design, Responsive Design
 Experience
-Public Health Agency of Canada (PHAC)| Website Developer Sept 2026 - Present
-● Developing a survey table system.
+Public Health Agency of Canada (PHAC)| Backend Website Developer Sept 2026 - Present
+● Collaborated with supervisors, clients, and front-end developers to build a Cycle Survey Information Tool.
+● Applied large language models to generate automated summaries of protected and copyrighted survey data with protected-data safeguards.
+● Generated synthetic datasets for comprehensive prototype testing without exposing sensitive records.
+● Sent weekly status reports and structured email updates to front-end developers across non-overlapping schedules.
+● Developed presentations for staff, gathered feedback, and communicated design improvements and feature requests.
 RoboGarden | UI/UX Developer Jul 2026 - Aug 2026
 ● Authored technical review reports for 10 online courses (8 CodingVille, 2 UpSkilling),
 evaluating course design, quiz UX, and content structure.
@@ -115,27 +121,27 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const hf = new InferenceClient(process.env.HF_API_TOKEN);
-
 // API Endpoint
 app.post('/api/question-answer', async (req, res) => {
-  console.log('🟢 Hit /api/question-answer route with body:', req.body);
-  const { input } = req.body;
+  const { input } = req.body ?? {};
+
+  if (typeof input !== 'string' || !input.trim()) {
+    return res.status(400).json({ message: 'A non-empty input string is required.' });
+  }
+  if (input.length > 2000) {
+    return res.status(413).json({ message: 'Please keep your question under 2,000 characters.' });
+  }
 
   try {
-    const response = await hf.chatCompletion({
-      model: "Qwen/Qwen2.5-72B-Instruct",
-      messages: [
-        { role: "system", content: sys_content },
-        { role: "user", content: input }
-      ],
-      max_tokens: 500
-    });
+    const response = await chatWithCloudflare([
+      { role: "system", content: sys_content },
+      { role: "user", content: input.trim() }
+    ]);
 
     res.status(200).json(response);
   } catch (err) {
-    console.error('🔴 Hugging Face error:', err);
-    res.status(500).json({ message: `Error in backend: ${err.message}` });
+    console.error('Cloudflare Workers AI error:', err);
+    res.status(502).json({ message: `Error in backend: ${err.message}` });
   }
 });
 
