@@ -1,4 +1,4 @@
-const MODEL = "@cf/meta/llama-4-scout-17b-16e-instruct";
+const MODEL = "@cf/zai-org/glm-4.7-flash";
 
 export async function chatWithCloudflare(messages) {
   const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
@@ -16,7 +16,8 @@ export async function chatWithCloudflare(messages) {
         Authorization: `Bearer ${apiToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ messages, max_tokens: 300 }),
+      body: JSON.stringify({ messages, max_tokens: 160 }),
+      signal: AbortSignal.timeout(25000),
     }
   );
 
