@@ -16,7 +16,11 @@ export async function chatWithCloudflare(messages) {
         Authorization: `Bearer ${apiToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ messages, max_tokens: 160 }),
+      body: JSON.stringify({
+        messages,
+        max_completion_tokens: 160,
+        chat_template_kwargs: { enable_thinking: false },
+      }),
       signal: AbortSignal.timeout(25000),
     }
   );
@@ -35,9 +39,18 @@ export async function chatWithCloudflare(messages) {
     throw new Error(details || `Cloudflare Workers AI request failed (HTTP ${response.status}).`);
   }
 
-  const answer = payload.result?.response;
-  if (typeof answer !== "string" || !answer.trim()) {
-    throw new Error("Cloudflare Workers AI returned an empty response.");
+  const answer = [
+    payload.result?.choices?.[0]?.message?.content,
+    payload.result?.response,
+    payload.choices?.[0]?.message?.content,
+  ].find((candidate) => typeof candidate === "string" && candidate.trim());
+
+  if (!answer) {
+    const resultFields =
+      payload.result && typeof payload.result === "object"
+        ? Object.keys(payload.result).join(", ")
+        : "none";
+    throw new Error(`Cloudflare Workers AI returned no text (result fields: ${resultFields}).`);
   }
 
   return { choices: [{ message: { content: answer } }] };
